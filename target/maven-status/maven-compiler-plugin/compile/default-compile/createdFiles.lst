@@ -1,1 +1,16 @@
+br\rpe\challenger\view\exception\CarAlreadyExistsException.class
+br\rpe\challenger\view\exception\CarNotFoundException.class
+br\rpe\challenger\controller\PassengerCarController.class
+br\rpe\challenger\model\service\CargoCarService.class
+br\rpe\challenger\model\repository\CargoCarRepository.class
+br\rpe\challenger\model\repository\PassengerCarRepository.class
+br\rpe\challenger\model\entity\CargoCar.class
+br\rpe\challenger\model\service\PassengerCarMapper.class
+br\rpe\challenger\view\dto\PassengerCarDataDTO.class
+br\rpe\challenger\view\dto\PassengerCarViewDTO.class
 br\rpe\challenger\CarManagementApplication.class
+br\rpe\challenger\model\entity\PassengerCar.class
+br\rpe\challenger\view\exception\ExceptionDetails.class
+br\rpe\challenger\view\exception\GlobalExceptionHandler.class
+br\rpe\challenger\model\service\PassengerCarServiceImpl.class
+br\rpe\challenger\model\service\PassengerCarService.class
