@@ -53,6 +53,7 @@ public class PassengerCarServiceImpl implements PassengerCarService{
         }
 
         PassengerCar entity = mapper.passengerCarDataDTOToPassengerCar(dto);
+        entity.setId(id);
         return mapper.passengerCarToPassengerCarViewDTO(repository.save(entity));
     }
 

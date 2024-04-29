@@ -27,12 +27,12 @@ public class PassengerCarController {
     }
 
     @PostMapping
-    public ResponseEntity<PassengerCarViewDTO> save(@Valid PassengerCarDataDTO dto){
+    public ResponseEntity<PassengerCarViewDTO> save(@Valid @RequestBody PassengerCarDataDTO dto){
         return new ResponseEntity<>(service.save(dto), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PassengerCarViewDTO> update(@PathVariable Integer id, @Valid PassengerCarDataDTO dto){
+    public ResponseEntity<PassengerCarViewDTO> update(@PathVariable Integer id, @Valid @RequestBody PassengerCarDataDTO dto){
         return ResponseEntity.ok(service.update(id,dto));
     }
 
