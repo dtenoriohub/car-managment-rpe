@@ -2,6 +2,9 @@ C:\Users\Dtenorio\Desktop\desafio técnico RPE\challenger\src\main\java\br\rpe\c
 C:\Users\Dtenorio\Desktop\desafio técnico RPE\challenger\src\main\java\br\rpe\challenger\model\service\PassengerCarMapper.java
 C:\Users\Dtenorio\Desktop\desafio técnico RPE\challenger\src\main\java\br\rpe\challenger\view\exception\CarAlreadyExistsException.java
 C:\Users\Dtenorio\Desktop\desafio técnico RPE\challenger\src\main\java\br\rpe\challenger\CarManagementApplication.java
+C:\Users\Dtenorio\Desktop\desafio técnico RPE\challenger\src\main\java\br\rpe\challenger\view\dto\CargoCarDataDTO.java
+C:\Users\Dtenorio\Desktop\desafio técnico RPE\challenger\src\main\java\br\rpe\challenger\model\service\CargoCarMapper.java
+C:\Users\Dtenorio\Desktop\desafio técnico RPE\challenger\src\main\java\br\rpe\challenger\model\service\CargoCarServiceImpl.java
 C:\Users\Dtenorio\Desktop\desafio técnico RPE\challenger\src\main\java\br\rpe\challenger\model\repository\PassengerCarRepository.java
 C:\Users\Dtenorio\Desktop\desafio técnico RPE\challenger\src\main\java\br\rpe\challenger\model\service\PassengerCarService.java
 C:\Users\Dtenorio\Desktop\desafio técnico RPE\challenger\src\main\java\br\rpe\challenger\view\dto\PassengerCarViewDTO.java
@@ -10,7 +13,9 @@ C:\Users\Dtenorio\Desktop\desafio técnico RPE\challenger\src\main\java\br\rpe\c
 C:\Users\Dtenorio\Desktop\desafio técnico RPE\challenger\src\main\java\br\rpe\challenger\model\service\CargoCarService.java
 C:\Users\Dtenorio\Desktop\desafio técnico RPE\challenger\src\main\java\br\rpe\challenger\model\entity\CargoCar.java
 C:\Users\Dtenorio\Desktop\desafio técnico RPE\challenger\src\main\java\br\rpe\challenger\controller\PassengerCarController.java
+C:\Users\Dtenorio\Desktop\desafio técnico RPE\challenger\src\main\java\br\rpe\challenger\controller\CargoCarController.java
 C:\Users\Dtenorio\Desktop\desafio técnico RPE\challenger\src\main\java\br\rpe\challenger\view\exception\CarNotFoundException.java
 C:\Users\Dtenorio\Desktop\desafio técnico RPE\challenger\src\main\java\br\rpe\challenger\model\service\PassengerCarServiceImpl.java
+C:\Users\Dtenorio\Desktop\desafio técnico RPE\challenger\src\main\java\br\rpe\challenger\view\dto\CargoCarViewDTO.java
 C:\Users\Dtenorio\Desktop\desafio técnico RPE\challenger\src\main\java\br\rpe\challenger\view\dto\PassengerCarDataDTO.java
 C:\Users\Dtenorio\Desktop\desafio técnico RPE\challenger\src\main\java\br\rpe\challenger\model\repository\CargoCarRepository.java
