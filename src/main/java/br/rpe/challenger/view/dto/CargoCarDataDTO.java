@@ -19,7 +19,7 @@ public class CargoCarDataDTO {
     @NotBlank(message = "Brand should not be blank!")
     private String brand;
 
-    @NotBlank(message = "Capacity should not be blank")
+    @Positive(message = "Capacity should not be blank")
     private int capacity;
 
     @Positive(message = "QuantityCarBody should not be blank")
