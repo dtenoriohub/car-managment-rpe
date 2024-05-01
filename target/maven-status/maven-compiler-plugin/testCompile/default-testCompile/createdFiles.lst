@@ -1,1 +1,5 @@
+br\rpe\challenger\model\repository\CargoCarRepositoryTest.class
+br\rpe\challenger\view\dto\CargoCarDataDTOTest.class
+br\rpe\challenger\model\repository\PassengerCarRepositoryTest.class
 br\rpe\challenger\CarManagementApplicationTests.class
+br\rpe\challenger\view\dto\PassengerCarDataDTOTest.class

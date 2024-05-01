@@ -17,6 +17,7 @@ import java.util.List;
 @Service
 public class CargoCarServiceImpl implements CargoCarService{
     private CargoCarRepository repository;
+
     @Autowired
     private CargoCarMapper mapper;
 
@@ -52,12 +53,11 @@ public class CargoCarServiceImpl implements CargoCarService{
         entity.setId(id);
         return mapper.cargoCarToCargoCarViewDTO(repository.save(entity));
     }
-
     @SneakyThrows
     @Override
     public void delete(Integer id){
         if(!repository.existsById(id)){
-            throw new CarNotFoundException("passenger car", "id", id.toString());
+            throw new CarNotFoundException("cargo car", "id", id.toString());
         }
         repository.deleteById(id);
     }

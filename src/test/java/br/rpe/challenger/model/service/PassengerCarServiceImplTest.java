@@ -1,9 +1,9 @@
 package br.rpe.challenger.model.service;
 
-import br.rpe.challenger.model.entity.CargoCar;
-import br.rpe.challenger.model.repository.CargoCarRepository;
-import br.rpe.challenger.view.dto.CargoCarDataDTO;
-import br.rpe.challenger.view.dto.CargoCarViewDTO;
+import br.rpe.challenger.model.entity.PassengerCar;
+import br.rpe.challenger.model.repository.PassengerCarRepository;
+import br.rpe.challenger.view.dto.PassengerCarDataDTO;
+import br.rpe.challenger.view.dto.PassengerCarViewDTO;
 import br.rpe.challenger.view.exception.CarAlreadyExistsException;
 import br.rpe.challenger.view.exception.CarNotFoundException;
 import org.junit.jupiter.api.BeforeAll;
@@ -19,26 +19,25 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyList;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
-public class CargoCarServiceImplTest {
+public class PassengerCarServiceImplTest {
+
     @Mock
-    private CargoCarRepository repository;
+    private PassengerCarRepository repository;
 
     @Spy
-    private CargoCarMapper mapper;
+    private PassengerCarMapper mapper;
 
     @InjectMocks
     @Spy
-    private static CargoCarServiceImpl service;
+    private static PassengerCarServiceImpl service;
 
-    private static CargoCar entity;
-    private static CargoCarDataDTO dataDTO;
-    private static CargoCarViewDTO viewDTO;
+    private static PassengerCar entity;
+    private static PassengerCarDataDTO dataDTO;
+    private static PassengerCarViewDTO viewDTO;
 
     @BeforeEach
     void beforeEach() {
@@ -49,39 +48,39 @@ public class CargoCarServiceImplTest {
 
     @BeforeAll
     static void setUp() {
-        entity = new CargoCar(1, "ABC123", "Name", "Brand", 50, 50);
-        dataDTO = new CargoCarDataDTO("ABC123", "Name", "Brand", 50, 50);
-        viewDTO = new CargoCarViewDTO(1, "ABC123", "Name", "Brand", 50, 50);
+        entity = new PassengerCar(1, "ABC123", "Name", "Brand", 5);
+        dataDTO = new PassengerCarDataDTO("ABC123", "Name", "Brand", 5);
+        viewDTO = new PassengerCarViewDTO(1, "ABC123", "Name", "Brand", 5);
     }
 
     @Test
     void testShouldFindAll() {
         when(repository.findAll()).thenReturn(List.of(entity));
-        when(mapper.cargoCarToCargoCarViewDTO(anyList())).thenReturn(List.of(viewDTO));
+        when(mapper.passengerCarToPassengerCarViewDTO(anyList())).thenReturn(List.of(viewDTO));
 
-        List<CargoCarViewDTO> dtos = service.findAll();
+        List<PassengerCarViewDTO> dtos = service.findAll();
 
         assertTrue(dtos.size() == 1);
         assertEquals(dtos.get(0).getId(), viewDTO.getId());
 
         verify(repository).findAll();
-        verify(mapper).cargoCarToCargoCarViewDTO(anyList());
+        verify(mapper).passengerCarToPassengerCarViewDTO(anyList());
     }
 
     @Test
     void testShouldFindById() {
         when(repository.existsById(any())).thenReturn(true);
         when(repository.findById(any())).thenReturn(Optional.of(entity));
-        when(mapper.cargoCarToCargoCarViewDTO(any(CargoCar.class))).thenReturn(viewDTO);
+        when(mapper.passengerCarToPassengerCarViewDTO(any(PassengerCar.class))).thenReturn(viewDTO);
 
-        CargoCarViewDTO dto = assertDoesNotThrow(() -> service.findById(1));
+        PassengerCarViewDTO dto = assertDoesNotThrow(() -> service.findById(1));
 
         assertTrue(dto != null);
         assertEquals(dto, viewDTO);
 
         verify(repository).existsById(any());
         verify(repository).findById(any());
-        verify(mapper).cargoCarToCargoCarViewDTO(any(CargoCar.class));
+        verify(mapper).passengerCarToPassengerCarViewDTO(any(PassengerCar.class));
     }
 
     @Test
@@ -90,7 +89,7 @@ public class CargoCarServiceImplTest {
 
         Throwable exception = assertThrows(CarNotFoundException.class, () -> service.findById(999));
 
-        assertEquals("Could not find a cargo car with id = '999'", exception.getMessage());
+        assertEquals("Could not find a passenger car with id = '999'", exception.getMessage());
 
         verify(repository).existsById(any());
         verify(repository, times(0)).findById(any());
@@ -100,19 +99,19 @@ public class CargoCarServiceImplTest {
     @Test
     void testShouldSave() {
         when(repository.existsByLicencePlate(anyString())).thenReturn(false);
-        when(repository.save(any(CargoCar.class))).thenReturn(entity);
-        when(mapper.cargoCarDataDTOToCargoCar(any())).thenReturn(entity);
-        when(mapper.cargoCarToCargoCarViewDTO(any(CargoCar.class))).thenReturn(viewDTO);
+        when(repository.save(any(PassengerCar.class))).thenReturn(entity);
+        when(mapper.passengerCarDataDTOToPassengerCar(any())).thenReturn(entity);
+        when(mapper.passengerCarToPassengerCarViewDTO(any(PassengerCar.class))).thenReturn(viewDTO);
 
-        CargoCarViewDTO dto = assertDoesNotThrow(() -> service.save(dataDTO));
+        PassengerCarViewDTO dto = assertDoesNotThrow(() -> service.save(dataDTO));
 
         assertTrue(dto != null);
         assertEquals(dto, viewDTO);
 
         verify(repository).existsByLicencePlate(anyString());
-        verify(repository).save(any(CargoCar.class));
-        verify(mapper).cargoCarDataDTOToCargoCar(any());
-        verify(mapper).cargoCarToCargoCarViewDTO(any(CargoCar.class));
+        verify(repository).save(any(PassengerCar.class));
+        verify(mapper).passengerCarDataDTOToPassengerCar(any());
+        verify(mapper).passengerCarToPassengerCarViewDTO(any(PassengerCar.class));
     }
 
     @Test
@@ -121,29 +120,29 @@ public class CargoCarServiceImplTest {
 
         Throwable exception = assertThrows(CarAlreadyExistsException.class, () -> service.save(dataDTO));
 
-        assertEquals("A cargo car with licence plate = 'ABC123' already exists", exception.getMessage());
+        assertEquals("A passenger car with licence plate = 'ABC123' already exists", exception.getMessage());
 
         verify(repository).existsByLicencePlate(anyString());
-        verify(repository, times(0)).save(any(CargoCar.class));
+        verify(repository, times(0)).save(any(PassengerCar.class));
         verifyNoInteractions(mapper);
     }
 
     @Test
     void testShouldUpdate() {
         when(repository.existsById(any())).thenReturn(true);
-        when(repository.save(any(CargoCar.class))).thenReturn(entity);
-        when(mapper.cargoCarDataDTOToCargoCar(any())).thenReturn(entity);
-        when(mapper.cargoCarToCargoCarViewDTO(any(CargoCar.class))).thenReturn(viewDTO);
+        when(repository.save(any(PassengerCar.class))).thenReturn(entity);
+        when(mapper.passengerCarDataDTOToPassengerCar(any())).thenReturn(entity);
+        when(mapper.passengerCarToPassengerCarViewDTO(any(PassengerCar.class))).thenReturn(viewDTO);
 
-        CargoCarViewDTO dto = assertDoesNotThrow(() -> service.update(1, dataDTO));
+        PassengerCarViewDTO dto = assertDoesNotThrow(() -> service.update(1, dataDTO));
 
         assertTrue(dto != null);
         assertEquals(dto, viewDTO);
 
         verify(repository).existsById(any());
-        verify(repository).save(any(CargoCar.class));
-        verify(mapper).cargoCarDataDTOToCargoCar(any());
-        verify(mapper).cargoCarToCargoCarViewDTO(any(CargoCar.class));
+        verify(repository).save(any(PassengerCar.class));
+        verify(mapper).passengerCarDataDTOToPassengerCar(any());
+        verify(mapper).passengerCarToPassengerCarViewDTO(any(PassengerCar.class));
     }
 
     @Test
@@ -152,10 +151,10 @@ public class CargoCarServiceImplTest {
 
         Throwable exception = assertThrows(CarNotFoundException.class, () -> service.update(999, dataDTO));
 
-        assertEquals("Could not find a cargo car with id = '999'", exception.getMessage());
+        assertEquals("Could not find a passenger car with id = '999'", exception.getMessage());
 
         verify(repository).existsById(any());
-        verify(repository, times(0)).save(any(CargoCar.class));
+        verify(repository, times(0)).save(any(PassengerCar.class));
         verifyNoInteractions(mapper);
     }
 
@@ -176,9 +175,10 @@ public class CargoCarServiceImplTest {
 
         Throwable exception = assertThrows(CarNotFoundException.class, () -> service.delete(999));
 
-        assertEquals("Could not find a cargo car with id = '999'", exception.getMessage());
+        assertEquals("Could not find a passenger car with id = '999'", exception.getMessage());
 
         verify(repository).existsById(any());
         verify(repository, times(0)).deleteById(any());
     }
+
 }
